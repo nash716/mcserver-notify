@@ -45,7 +45,7 @@ mc.listener = function(event, filename) {
 		for (var i=0; i<mc.conf.users.length; i++) {
 			if (mc.conf.users[i].minecraft == user) continue;
 
-			push(mc.conf.users[i].kayac, user + 'has logged out from Minecraft Server.');
+			push(mc.conf.users[i].kayac, user + 'has logged out from Minecraft Server.', mc.callback);
 		}
 	} else if (log[log.length - 1].indexOf('logged in with entity') >= 0) {
 		var user = log[log.length - 1].match(/\[INFO\]\s(\w+)\[/)[1];
@@ -53,9 +53,13 @@ mc.listener = function(event, filename) {
 		for (var i=0; i<mc.conf.users.length; i++) {
 			if (mc.conf.users[i].minecraft == user) continue;
 
-			push(mc.conf.users[i].kayac, user + 'has logged in to Minecraft Server.');
+			push(mc.conf.users[i].kayac, user + 'has logged in to Minecraft Server.', mc.callback);
 		}
 	}
+};
+
+mc.callback = function(data) {
+	console.log(data);
 };
 
 module.exports = exports = mc;
