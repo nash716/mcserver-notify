@@ -47,7 +47,7 @@ mc.listener = function(event, filename) {
 
 			push(mc.conf.users[i].kayac, user + 'has logged out from Minecraft Server.');
 		}
-	} else if (log[log.length - 1].indexOf('') >= 0) {
+	} else if (log[log.length - 1].indexOf('logged in with entity') >= 0) {
 		var user = log[log.length - 1].match(/\[INFO\]\s(\w+)\[/)[1];
 
 		for (var i=0; i<mc.conf.users.length; i++) {
