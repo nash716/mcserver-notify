@@ -39,21 +39,21 @@ mc.listener = function(event, filename) {
 
 	log = log.split('\n');
 
-	if (log[log.length - 1].indexOf('disconnect.quitting') >= 0) {
-		var user = log[log.length - 1].match(/\[INFO\]\s(\w+)\s/)[1];
+	if (log[log.length - 2].indexOf('disconnect.quitting') >= 0) {
+		var user = log[log.length - 2].match(/\[INFO\]\s(\w+)\s/)[1];
 
 		for (var i=0; i<mc.conf.users.length; i++) {
 			if (mc.conf.users[i].minecraft == user) continue;
 
-			push(mc.conf.users[i].kayac, user + 'has logged out from Minecraft Server.', mc.callback);
+			push(mc.conf.users[i].kayac, user + ' has logged out from Minecraft Server.', mc.callback);
 		}
-	} else if (log[log.length - 1].indexOf('logged in with entity') >= 0) {
-		var user = log[log.length - 1].match(/\[INFO\]\s(\w+)\[/)[1];
+	} else if (log[log.length - 2].indexOf('logged in with entity') >= 0) {
+		var user = log[log.length - 2].match(/\[INFO\]\s(\w+)\[/)[1];
 
 		for (var i=0; i<mc.conf.users.length; i++) {
 			if (mc.conf.users[i].minecraft == user) continue;
 
-			push(mc.conf.users[i].kayac, user + 'has logged in to Minecraft Server.', mc.callback);
+			push(mc.conf.users[i].kayac, user + ' has logged in to Minecraft Server.', mc.callback);
 		}
 	}
 };
