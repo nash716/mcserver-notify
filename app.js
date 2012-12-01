@@ -20,5 +20,3 @@ try {
 }
 
 mc.startWatch(settings);
-
-//var watcher = fs.watch('')

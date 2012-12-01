@@ -26,10 +26,6 @@ mc.config = function(config) {
 
 mc.startWatch = function(config) {
 	mc.watcher = fs.watch(config.logFile, { persistent: true }, mc.listener);
-/*
-	process.on('exit', function() {
-		mc.watcher.close();
-	});*/
 };
 
 mc.listener = function(event, filename) {
