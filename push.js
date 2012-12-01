@@ -1,12 +1,12 @@
 module.exports = function(user, mes, callback) {
 	var http = require('http'),
-		url = require('url'),
-		querystring = require('querystring');
+	    url = require('url'),
+	    querystring = require('querystring');
 	
 	var parsedURL = url.parse('http://im.kayac.com/api/post/' + user),
-		body = { 
+	    body = { 
 			message: mes
-		};
+	    };
 
 	var postData = querystring.stringify(body);
 
